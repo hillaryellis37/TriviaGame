@@ -1,0 +1,68 @@
+body {
+/*	background-image: url("https://images.alphacoders.com/226/226091.jpg");*/
+	background-image: url("http://jnsrmgksb.com/data/out/169/46409815-hbo-game-of-thrones-wallpaper.jpg");
+	background-image: 
+}
+
+header h1 {
+	color: white;
+}
+
+.container {
+	margin-top: 200px;
+}
+
+.left-container {
+	background-color: white;
+	height: 500px;
+}
+
+#image_container {
+	background-color: white;
+	height: 500px;
+}
+
+.timer-container {
+/*	background-color: red;*/
+}
+
+.score-container {
+/*	background-color: orange;*/
+}
+
+.question-container {
+/*	background-color: yellow;*/
+}
+
+.mult-choice-container {
+/*	background-color: green;*/
+}
+
+.mult-choice-container button {
+	display: block;
+}
+
+
+.explanation-container {
+/*	background-color: blue;*/
+}
+
+.row1 {
+	height: 10%;
+
+}
+.row2 {
+	height: 20%;
+	
+}
+.row3 {
+	height: 40%;
+	
+}
+.row4 {
+	height: 30%;
+}
+
+p, button {
+	font-size: 16pt;
+}
