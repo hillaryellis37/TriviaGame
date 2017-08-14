@@ -10,6 +10,7 @@
 	var total = 0;
 	var gameOn = false;
 	var intervalId;
+	var timeoutInterval;
 	var count = 1;
 	var nextQuestion;
 
@@ -36,13 +37,17 @@ var timer = {
 
 	},
 	timeout: function() {
-		setTimeout(function() {
+		timeoutInterval = setTimeout(function() {
 		gameOn = false;
 		timer.stop();
 		
 		} , 30000);
+	},
+	clearTimeout: function() {
+		clearTimeout(timeoutInterval);
 	}
 };
+
 var question1 = {
 	question: "<p>How did Daenerys Targaryen eventually hatch her dragon eggs?</p>",
 	multChoices: {multChoice1: "<button id='choice1'>1. In a lightning storm</button>", 
@@ -96,12 +101,12 @@ var question2 = {
 };
 
 var question3 = {
-	question: "<p>How many times has Beric Dondarrion been brought back to life?</p>",
-	multChoices: {multChoice1: "<button id='choice1'>1. Three times</button>", 
-				  multChoice2: "<button id='choice2'>2. Five times</button>",
-				  multChoice3: "<button id='choice3'>3. Six times</button>",
-				  multChoice4: "<button id='choice4'>4. Seven times</button>"},
-	explanation: "<p>Beric Dondarrion has been resurrected by the God of Light a total of six times. His constant cheating of death comes with a price: each time, he explains, he loses some of his memories and is less himself.</p>",
+	question: "<p>Besides dragonglass, what is the only other substance capable of defeating White Walkers?</p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. Weirwood</button>", 
+				  multChoice2: "<button id='choice2'>2. Wildfire</button>",
+				  multChoice3: "<button id='choice3'>3. Valyrian Steel</button>",
+				  multChoice4: "<button id='choice4'>4. Snowballs</button>"},
+	explanation: "<p>Valyrian Steel is not only exceptionally sharp, strong and free of maintenance, but is also capable of taking down an immortal White Walker. The metal is easily identified by its distinctive rippled pattern.</p>",
 	correct: function() {
 			return this.multChoices.multChoice3;
 			},
@@ -122,14 +127,14 @@ var question3 = {
 };
 
 var question4 = {
-	question: "<p>How many times has Beric Dondarrion been brought back to life?</p>",
-	multChoices: {multChoice1: "<button id='choice1'>1. Three times</button>", 
-				  multChoice2: "<button id='choice2'>2. Five times</button>",
-				  multChoice3: "<button id='choice3'>3. Six times</button>",
-				  multChoice4: "<button id='choice4'>4. Seven times</button>"},
-	explanation: "<p>Beric Dondarrion has been resurrected by the God of Light a total of six times. His constant cheating of death comes with a price: each time, he explains, he loses some of his memories and is less himself.</p>",
+	question: "<p>American actor Peter Dinklage, who plays Tyrion Lannister, also had a starring role in this fantasy franchise: </p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. The Chronicles of Narnia</button>", 
+				  multChoice2: "<button id='choice2'>2. Highlander</button>",
+				  multChoice3: "<button id='choice3'>3. The Legend of Zelda</button>",
+				  multChoice4: "<button id='choice4'>4. Lord of the Rings</button>"},
+	explanation: '<p>Dinklage played Trumpkin in the 2008 film "The Chronicles of Narnia: Prince Caspian." He was not only the first person cast for the "Game of Thrones" series, but also the only person author George R.R. Martin wanted to play Tyrion.</p>',
 	correct: function() {
-			return this.multChoices.multChoice3;
+			return this.multChoices.multChoice1;
 			},
 	gif: "",
 	dataButtons: function() {
@@ -151,6 +156,7 @@ var question4 = {
 
 
 function triviaQuestions(questionObject) {
+	timer.clearTimeout();
 	timer.reset();
 	timer.start();
 	timer.timeout();
