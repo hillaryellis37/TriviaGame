@@ -5,6 +5,10 @@
 	var DOMmultChoice = $(".mult-choice-container");
 	var DOMexplanation = $(".explanation-container");
 	var DOMgif = $(".gif");
+	var correct = 0;
+	var incorrect = 0;
+	var total = 0;
+	var gameOn = false;
 
 
 // all questions as objects: 
@@ -33,30 +37,50 @@ var question1 = {
 
 
 
+function triviaQuestions(questionObject) {
+
+	DOMquestion.append(questionObject.question);
+	DOMmultChoice.append(questionObject.multChoices.multChoice1, questionObject.multChoices.multChoice2, questionObject.multChoices.multChoice3, questionObject.multChoices.multChoice4);
+	DOMgif.attr("src", questionObject.gif);
+	questionObject.dataButtons();
+
+	gameOn = true;
+
+		$(".button").on("click", function() {
+			if (gameOn) {
+				DOMexplanation.append(questionObject.explanation);
+
+				if (($(this).attr("data-multChoice")) === (questionObject.correct())) {
+					DOMexplanation.prepend("<p>Correct!</p>");
+					correct++;
+					total = correct + incorrect;
+					$("#score").html("Score: " + correct + "/" + total);
+					gameOn = false;
+						console.log(gameOn);
+				} else {
+					DOMexplanation.prepend("<p>Incorrect!</p>");
+					incorrect++;
+					total = correct + incorrect;
+					console.log(incorrect);
+					console.log(total);
+					$("#score").html("Score: " + correct + "/" + total);
+					gameOn = false;
+						console.log(gameOn);
+				}
+			}
+		});
+	
+}
+
 
 
 function pageSetup() {
+
 	$(".start-page-container").html("");
+	
 	DOMtimer.append("<p>00:00</p>");
-	DOMscore.append("<p>Score: 0</p>");
-	DOMquestion.append(question1.question);
-	DOMmultChoice.append(question1.multChoices.multChoice1, question1.multChoices.multChoice2, question1.multChoices.multChoice3, question1.multChoices.multChoice4);
-	DOMgif.attr("src", question1.gif);
-	question1.dataButtons();
-
-	$(".button").on("click", function() {
-		DOMexplanation.append(question1.explanation);
-		console.log($(this).attr("data-multChoice"));
-		console.log(question1.correct());
-
-
-	if (($(this).attr("data-multChoice")) === (question1.correct())) {
-	 	DOMexplanation.prepend("<p>Correct!</p>");
-	} else {
-		DOMexplanation.prepend("<p>Incorrect!</p>");
-	}
-
-	});
+	DOMscore.append("<p id='score'>Score: " + correct + "</p>");
+	triviaQuestions(question1);
 
 }
 
