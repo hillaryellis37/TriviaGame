@@ -151,6 +151,7 @@ var question4 = {
 
 
 function triviaQuestions(questionObject) {
+	timer.reset();
 	timer.start();
 	timer.timeout();
 	DOMquestion.empty();
@@ -175,7 +176,7 @@ function triviaQuestions(questionObject) {
 						$("#score").html("Score: " + correct + "/" + total);
 						gameOn = false;
 						timer.stop();
-						setTimeout(triviaQuestions, 3000, questionObject.next());
+						setTimeout(triviaQuestions, 7000, questionObject.next());
 
 
 					} else {
@@ -186,7 +187,7 @@ function triviaQuestions(questionObject) {
 						$("#score").html("Score: " + correct + "/" + total);
 						gameOn = false;
 						timer.stop();
-						setTimeout(triviaQuestions, 3000, questionObject.next());
+						setTimeout(triviaQuestions, 7000, questionObject.next());
 					}
 				}
 			});
