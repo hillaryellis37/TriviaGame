@@ -9,9 +9,26 @@
 	var incorrect = 0;
 	var total = 0;
 	var gameOn = false;
+	var intervalId;
 
 
 // all questions as objects: 
+var timer = {
+	time: 30,
+	reset: function() {
+		timer.time = 30;
+		$("#timer").html("Time Remaining: 00:" + timer.time);
+
+	},
+	start: function() {
+		setInterval(timer.count, 1000);
+	},
+	count: function() {
+		timer.time--;
+		$("#timer").html("Time Remaining: 00:" + timer.time)
+	},
+};
+
 var question1 = {
 	question: "<p>How did Daenerys Targaryen eventually hatch her dragon eggs?</p>",
 	multChoices: {multChoice1: "<button id='choice1'>1. In a lightning storm</button>", 
@@ -38,7 +55,7 @@ var question1 = {
 
 
 function triviaQuestions(questionObject) {
-
+	timer.start();
 	DOMquestion.append(questionObject.question);
 	DOMmultChoice.append(questionObject.multChoices.multChoice1, questionObject.multChoices.multChoice2, questionObject.multChoices.multChoice3, questionObject.multChoices.multChoice4);
 	DOMgif.attr("src", questionObject.gif);
@@ -78,7 +95,7 @@ function pageSetup() {
 
 	$(".start-page-container").html("");
 	
-	DOMtimer.append("<p>00:00</p>");
+	DOMtimer.append("<p id='timer'>Time Remaining: 00:30</p>");
 	DOMscore.append("<p id='score'>Score: " + correct + "</p>");
 	triviaQuestions(question1);
 
