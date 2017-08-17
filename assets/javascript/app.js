@@ -12,7 +12,8 @@
 	var intervalId;
 	var timeoutInterval;
 	var count = 1;
-	var nextQuestion;
+	var nextQ;
+
 
 
 // all questions as objects: 
@@ -40,6 +41,13 @@ var timer = {
 		timeoutInterval = setTimeout(function() {
 		gameOn = false;
 		timer.stop();
+		DOMexplanation.append("<p style='color: red;'>You have run out of time! Please press next to go to the next question: </p>");
+		DOMexplanation.append("<button id='nextQ'>Next</button>");
+			$("#nextQ").on("click", function() {
+				triviaQuestions(nextQ);
+
+			
+			});
 		
 		} , 30000);
 	},
@@ -84,7 +92,7 @@ var question2 = {
 	correct: function() {
 			return this.multChoices.multChoice3;
 			},
-	gif: "",
+	gif: "https://media.giphy.com/media/13l0x798RdO8Io/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -110,7 +118,7 @@ var question3 = {
 	correct: function() {
 			return this.multChoices.multChoice3;
 			},
-	gif: "",
+	gif: "https://media.giphy.com/media/ESTkKpEPVG4aA/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -136,7 +144,163 @@ var question4 = {
 	correct: function() {
 			return this.multChoices.multChoice1;
 			},
-	gif: "",
+	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	dataButtons: function() {
+			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
+			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
+			$("#choice3").attr("data-multChoice", this.multChoices.multChoice3);
+			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
+
+			for (var i = 1; i <=4; i++) {
+				$("#choice" + i).addClass("button");
+			}
+	},
+	next: function() {
+		return question5;
+	}
+};
+
+var question5 = {
+	question: "<p>The name of King Tommen's favorite cat is: </p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. Battle Pus</button>", 
+				  multChoice2: "<button id='choice2'>2. Little Lion</button>",
+				  multChoice3: "<button id='choice3'>3. Ser Pounce</button>",
+				  multChoice4: "<button id='choice4'>4. Prince Fuzzy</button>"},
+	explanation: '<p>In Season 4, Ser Pounce is introduced. Its appearance caused something of a stir on the Internet, with fans demanding that Ser Pounce be featured in future episodes. According to one writer, that likely will not happen. "I will say that cat was a nightmare to work with."</p>',
+	correct: function() {
+			return this.multChoices.multChoice3;
+			},
+	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	dataButtons: function() {
+			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
+			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
+			$("#choice3").attr("data-multChoice", this.multChoices.multChoice3);
+			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
+
+			for (var i = 1; i <=4; i++) {
+				$("#choice" + i).addClass("button");
+			}
+	},
+	next: function() {
+		return question6;
+	}
+};
+
+var question6 = {
+	question: "<p>What was the name of Ned Stark's great sword?</p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. Ice</button>", 
+				  multChoice2: "<button id='choice2'>2. Widow's Wail</button>",
+				  multChoice3: "<button id='choice3'>3. Oathkeeper</button>",
+				  multChoice4: "<button id='choice4'>4. Northguard</button>"},
+	explanation: "<p>Ice was the official sword of the Lord of Winterfell, forged from Valyrian steel and handed down over the ages. After being used to behead Ned Stark at the end of Season 1, it was subsequently melted down to forge two new swords – the Oathkeeper and Widow's Wail.</p>",
+	correct: function() {
+			return this.multChoices.multChoice1;
+			},
+	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	dataButtons: function() {
+			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
+			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
+			$("#choice3").attr("data-multChoice", this.multChoices.multChoice3);
+			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
+
+			for (var i = 1; i <=4; i++) {
+				$("#choice" + i).addClass("button");
+			}
+	},
+	next: function() {
+		return question7;
+	}
+};
+
+var question7 = {
+	question: "<p>Who shoots the flaming arrow that subsequently destroy's Stannis' fleet in Blackwater Bay?</p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. Tyrion Lannister</button>", 
+				  multChoice2: "<button id='choice2'>2. King Joffrey</button>",
+				  multChoice3: "<button id='choice3'>3. Jaime Lannister</button>",
+				  multChoice4: "<button id='choice4'>4. Bronn</button>"},
+	explanation: "<p>After a signal from Tyrion, Bronn shoots a flaming arrow into a floating trap of wildfire around Stannis Baratheon's fleet. The explosion that follows destroys dozens of ships and effectively wins the battle for King Joffrey.</p>",
+	correct: function() {
+			return this.multChoices.multChoice4;
+			},
+	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	dataButtons: function() {
+			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
+			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
+			$("#choice3").attr("data-multChoice", this.multChoices.multChoice3);
+			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
+
+			for (var i = 1; i <=4; i++) {
+				$("#choice" + i).addClass("button");
+			}
+	},
+	next: function() {
+		return question8;
+	}
+};
+
+var question8 = {
+	question: "<p>Prince Oberyn Martell is nicknamed the 'Red Viper' because of his combat and: </p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. Pride in drawing blood first</button>", 
+				  multChoice2: "<button id='choice2'>2. Knowledge of poisons</button>",
+				  multChoice3: "<button id='choice3'>3. Nighttime attacks</button>",
+				  multChoice4: "<button id='choice4'>4. Ruby-colored armor</button>"},
+	explanation: '<p>Oberyn Martell is skilled not only in combat, but also in the use of deadly potions. In the battle against Ser Gregor Clegane that ultimately cost him his life, Martell managed to severely wound "the mountain" with a spear tip coated in poisonous Manticore venom.</p>',
+	correct: function() {
+			return this.multChoices.multChoice2;
+			},
+	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	dataButtons: function() {
+			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
+			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
+			$("#choice3").attr("data-multChoice", this.multChoices.multChoice3);
+			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
+
+			for (var i = 1; i <=4; i++) {
+				$("#choice" + i).addClass("button");
+			}
+	},
+	next: function() {
+		return question9;
+	}
+};
+
+var question9 = {
+	question: "<p>Arya's punishment for stealing from the Many-Face God is: </p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. Death</button>", 
+				  multChoice2: "<button id='choice2'>2. Memory Loss</button>",
+				  multChoice3: "<button id='choice3'>3. Blindness</button>",
+				  multChoice4: "<button id='choice4'>4. Uncontrollable laughter</button>"},
+	explanation: "<p>After Arya takes a life that was not hers to kill, she is rendered blind as punishment. The scene, at the end of Season 5, is a new twist on Arya's efforts to become a 'faceless' assassin.</p>",
+	correct: function() {
+			return this.multChoices.multChoice3;
+			},
+	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	dataButtons: function() {
+			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
+			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
+			$("#choice3").attr("data-multChoice", this.multChoices.multChoice3);
+			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
+
+			for (var i = 1; i <=4; i++) {
+				$("#choice" + i).addClass("button");
+			}
+	},
+	next: function() {
+		return question10;
+	}
+};
+
+var question10 = {
+	question: "<p>Which Stark family direwolf was killed in retaliation for an attack on Prince Joffrey?</p>",
+	multChoices: {multChoice1: "<button id='choice1'>1. Ghost</button>", 
+				  multChoice2: "<button id='choice2'>2. Lady</button>",
+				  multChoice3: "<button id='choice3'>3. Nymeria</button>",
+				  multChoice4: "<button id='choice4'>4. Summer</button>"},
+	explanation: '<p>After the direwolf Nymeria flees into the woods following a defensive attack against Prince Joffrey, Queen Cersei Lannister orders the execution of her pack sister, Lady. Now, two of the four remaining Stark family direwolves are in places unknown.</p>',
+	correct: function() {
+			return this.multChoices.multChoice2;
+			},
+	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -153,9 +317,8 @@ var question4 = {
 };
 
 
-
-
 function triviaQuestions(questionObject) {
+	nextQ = questionObject.next();
 	timer.clearTimeout();
 	timer.reset();
 	timer.start();
@@ -163,12 +326,14 @@ function triviaQuestions(questionObject) {
 	DOMquestion.empty();
 	DOMmultChoice.empty();
 	DOMexplanation.empty();
-		DOMquestion.append(questionObject.question);
-		DOMmultChoice.append(questionObject.multChoices.multChoice1, questionObject.multChoices.multChoice2, questionObject.multChoices.multChoice3, questionObject.multChoices.multChoice4);
-		DOMgif.attr("src", questionObject.gif);
-		questionObject.dataButtons();
+	DOMquestion.append(questionObject.question);
+	DOMmultChoice.append(questionObject.multChoices.multChoice1, questionObject.multChoices.multChoice2, questionObject.multChoices.multChoice3, questionObject.multChoices.multChoice4);
+	DOMgif.attr("src", questionObject.gif);
+	questionObject.dataButtons();
 
-		gameOn = true;
+
+
+	gameOn = true;
 
 			$(".button").on("click", function() {
 				if (gameOn) {
