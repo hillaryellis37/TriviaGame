@@ -14,7 +14,27 @@
 	var count = 1;
 	var nextQ;
 
+			console.log(6 < 1 < 8);
 
+function gameOver() {
+		console.log(correct >= 9);
+		console.log(6 <= 1 <= 8);
+		console.log(correct <= 5);
+
+
+	if (correct >= 9) {
+		alert("The seven kingdoms bow before you! You scored " + correct + " out of " + total);
+	} 
+	else if ((6 <= correct) && (correct <= 8)) {
+
+		alert("You're a serious threat! You scored " + correct + " out of " + total);
+	}
+
+	else if (correct <= 5) {
+
+		alert("Prepare to join the night's watch! You scored " + correct + " out of " + total);
+	}
+}
 
 // all questions as objects: 
 var timer = {
@@ -39,17 +59,21 @@ var timer = {
 	},
 	timeout: function() {
 		timeoutInterval = setTimeout(function() {
-		gameOn = false;
-		timer.stop();
-		DOMexplanation.append("<p style='color: red;'>You have run out of time! Please press next to go to the next question: </p>");
-		DOMexplanation.append("<button id='nextQ'>Next</button>");
-			$("#nextQ").on("click", function() {
-				triviaQuestions(nextQ);
+		if (gameOn) {
+			gameOn = false;
+			timer.stop();
+			incorrect++;
+			total = correct + incorrect;
+			$("#score").html("Score: " + correct + "/" + total);
+			DOMexplanation.append("<p style='color: red;'>You have run out of time! Please press next to go to the next question: </p>");
+			DOMexplanation.append("<button id='nextQ'>Next</button>");
+				$("#nextQ").on("click", function() {
+					triviaQuestions(nextQ);
 
-			
-			});
-		
-		} , 30000);
+				
+				});
+			}			
+		} , 3000);
 	},
 	clearTimeout: function() {
 		clearTimeout(timeoutInterval);
@@ -170,7 +194,7 @@ var question5 = {
 	correct: function() {
 			return this.multChoices.multChoice3;
 			},
-	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	gif: "https://media.giphy.com/media/G5tv78Lpmkmu4/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -196,7 +220,7 @@ var question6 = {
 	correct: function() {
 			return this.multChoices.multChoice1;
 			},
-	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	gif: "https://media.giphy.com/media/kzlGvANuSMs0M/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -222,7 +246,7 @@ var question7 = {
 	correct: function() {
 			return this.multChoices.multChoice4;
 			},
-	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	gif: "https://media.giphy.com/media/a8npXvq6M7Cqk/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -274,7 +298,7 @@ var question9 = {
 	correct: function() {
 			return this.multChoices.multChoice3;
 			},
-	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	gif: "https://media.giphy.com/media/ZTMyRjoNbPqWk/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -300,7 +324,7 @@ var question10 = {
 	correct: function() {
 			return this.multChoices.multChoice2;
 			},
-	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
+	gif: "https://media.giphy.com/media/eT7uKeHH5EkOA/giphy.gif",
 	dataButtons: function() {
 			$("#choice1").attr("data-multChoice", this.multChoices.multChoice1);
 			$("#choice2").attr("data-multChoice", this.multChoices.multChoice2);
@@ -347,8 +371,11 @@ function triviaQuestions(questionObject) {
 						$("#score").html("Score: " + correct + "/" + total);
 						gameOn = false;
 						timer.stop();
-						setTimeout(triviaQuestions, 7000, questionObject.next());
-
+						if (total < 10) {
+							setTimeout(triviaQuestions, 1000, questionObject.next());
+						} else {
+							setTimeout(gameOver, 1000);
+						}
 
 					} else {
 						DOMexplanation.prepend("<p>Incorrect!</p>");
@@ -358,7 +385,11 @@ function triviaQuestions(questionObject) {
 						$("#score").html("Score: " + correct + "/" + total);
 						gameOn = false;
 						timer.stop();
-						setTimeout(triviaQuestions, 7000, questionObject.next());
+						if (total < 10) {
+							setTimeout(triviaQuestions, 1000, questionObject.next());
+						} else {
+							setTimeout(gameOver, 1000);
+						}
 					}
 				}
 			});
