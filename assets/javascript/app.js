@@ -14,27 +14,41 @@
 	var count = 1;
 	var nextQ;
 
-			console.log(6 < 1 < 8);
-
 function gameOver() {
-		console.log(correct >= 9);
-		console.log(6 <= 1 <= 8);
-		console.log(correct <= 5);
+	DOMquestion.empty();
+	DOMmultChoice.empty();
+	DOMexplanation.empty();
+	DOMquestion.empty();
+	DOMmultChoice.empty();
+
 
 
 	if (correct >= 9) {
-		alert("The seven kingdoms bow before you! You scored " + correct + " out of " + total);
+
+		$(".start-page-container").append("<p>The seven kingdoms bow before you! You scored " + correct + " out of " + total + "</p>");
 	} 
 	else if ((6 <= correct) && (correct <= 8)) {
 
-		alert("You're a serious threat! You scored " + correct + " out of " + total);
+		$(".start-page-container").append("<p>You're a serious threat! You scored " + correct + " out of " + total + "</p>");
 	}
 
 	else if (correct <= 5) {
 
-		alert("Prepare to join the night's watch! You scored " + correct + " out of " + total);
+		$(".start-page-container").append("<p>Prepare to join the night's watch! You scored " + correct + " out of " +  total + "</p>");
 	}
+
+	$(".start-page-container").append("<button id='play_again'>Play Again</button>");
+
+	$("#play_again").on("click", function() {
+		correct = 0;
+		incorrect = 0;
+		timer.reset();
+		total = correct + incorrect;
+		$("#score").html("Score: " + correct + "/" + total);
+		triviaQuestions(question1);
+	});
 }
+
 
 // all questions as objects: 
 var timer = {
@@ -343,6 +357,8 @@ var question10 = {
 
 function triviaQuestions(questionObject) {
 	nextQ = questionObject.next();
+
+	$(".start-page-container").empty();
 	timer.clearTimeout();
 	timer.reset();
 	timer.start();
