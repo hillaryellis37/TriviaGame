@@ -37,7 +37,7 @@ function gameOver() {
 		$(".start-page-container").append("<p>Prepare to join the night's watch! You scored " + correct + " out of " +  total + "</p>");
 	}
 
-	$(".start-page-container").append("<button id='play_again'>Play Again</button>");
+	$(".start-page-container").append("<button class='btn'id='play_again'>Play Again</button>");
 
 	$("#play_again").on("click", function() {
 		correct = 0;
@@ -112,7 +112,7 @@ var question1 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -138,7 +138,7 @@ var question2 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -164,7 +164,7 @@ var question3 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -190,7 +190,7 @@ var question4 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -216,7 +216,7 @@ var question5 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -242,7 +242,7 @@ var question6 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -268,7 +268,7 @@ var question7 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -294,7 +294,7 @@ var question8 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -320,7 +320,7 @@ var question9 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button");
 			}
 	},
 	next: function() {
@@ -346,7 +346,7 @@ var question10 = {
 			$("#choice4").attr("data-multChoice", this.multChoices.multChoice4);
 
 			for (var i = 1; i <=4; i++) {
-				$("#choice" + i).addClass("button");
+				$("#choice" + i).addClass("btn button btn");
 			}
 	},
 	next: function() {
@@ -391,7 +391,7 @@ function triviaQuestions(questionObject) {
 						if (total < 10) {
 							setTimeout(triviaQuestions, 1000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 7000);
+							setTimeout(gameOver, 1000);
 						}
 
 					} else {
@@ -406,7 +406,7 @@ function triviaQuestions(questionObject) {
 						if (total < 10) {
 							setTimeout(triviaQuestions, 1000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 7000);
+							setTimeout(gameOver, 1000);
 						}
 					}
 				}
