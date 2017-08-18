@@ -414,9 +414,9 @@ var newGame = function triviaQuestions(questionObject) {
 						gameOn = false;
 						timer.stop();
 						if (total < 10) {
-							setTimeout(triviaQuestions, 3000, questionObject.next());
+							setTimeout(triviaQuestions, 7000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 3000);
+							setTimeout(gameOver, 7000);
 						}
 
 					} else {
@@ -433,9 +433,9 @@ var newGame = function triviaQuestions(questionObject) {
 						gameOn = false;
 						timer.stop();
 						if (total < 10) {
-							setTimeout(triviaQuestions, 3000, questionObject.next());
+							setTimeout(triviaQuestions, 7000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 3000);
+							setTimeout(gameOver, 7000);
 						}
 					}
 				}
