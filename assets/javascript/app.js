@@ -13,6 +13,7 @@
 	var timeoutInterval;
 	var count = 1;
 	var nextQ;
+	var correctAnswer;
 
 function gameOver() {
 	DOMquestion.empty();
@@ -104,6 +105,7 @@ var question1 = {
 				  multChoice4: "<button id='choice4'>4. In a frozen cave</button>"},
 	explanation: "<p>At the end of Season 1, Daenerys Targaryen placed her three dragon eggs on the funeral pyre of her late husband. She then walked into the flames and emerged from the ashes the next morning holding three newly hatched dragons.</p>",
 	correct: function() {
+			correctAnswer = "#choice2";
 			return this.multChoices.multChoice2;
 			},
 	gif: "https://media.giphy.com/media/bVZrynojYe4qQ/giphy.gif",
@@ -130,6 +132,7 @@ var question2 = {
 				  multChoice4: "<button id='choice4'>4. Seven times</button>"},
 	explanation: "<p>Beric Dondarrion has been resurrected by the God of Light a total of six times. His constant cheating of death comes with a price: each time, he explains, he loses some of his memories and is less himself.</p>",
 	correct: function() {
+			correctAnswer = "#choice3";
 			return this.multChoices.multChoice3;
 			},
 	gif: "https://media.giphy.com/media/13l0x798RdO8Io/giphy.gif",
@@ -156,6 +159,7 @@ var question3 = {
 				  multChoice4: "<button id='choice4'>4. Snowballs</button>"},
 	explanation: "<p>Valyrian Steel is not only exceptionally sharp, strong and free of maintenance, but is also capable of taking down an immortal White Walker. The metal is easily identified by its distinctive rippled pattern.</p>",
 	correct: function() {
+			correctAnswer = "#choice3";
 			return this.multChoices.multChoice3;
 			},
 	gif: "https://media.giphy.com/media/ESTkKpEPVG4aA/giphy.gif",
@@ -182,6 +186,7 @@ var question4 = {
 				  multChoice4: "<button id='choice4'>4. Lord of the Rings</button>"},
 	explanation: '<p>Dinklage played Trumpkin in the 2008 film "The Chronicles of Narnia: Prince Caspian." He was not only the first person cast for the "Game of Thrones" series, but also the only person author George R.R. Martin wanted to play Tyrion.</p>',
 	correct: function() {
+			correctAnswer = "#choice1";
 			return this.multChoices.multChoice1;
 			},
 	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
@@ -208,6 +213,7 @@ var question5 = {
 				  multChoice4: "<button id='choice4'>4. Prince Fuzzy</button>"},
 	explanation: '<p>In Season 4, Ser Pounce is introduced. Its appearance caused something of a stir on the Internet, with fans demanding that Ser Pounce be featured in future episodes. According to one writer, that likely will not happen. "I will say that cat was a nightmare to work with."</p>',
 	correct: function() {
+			correctAnswer = "#choice3";
 			return this.multChoices.multChoice3;
 			},
 	gif: "https://media.giphy.com/media/G5tv78Lpmkmu4/giphy.gif",
@@ -234,6 +240,7 @@ var question6 = {
 				  multChoice4: "<button id='choice4'>4. Northguard</button>"},
 	explanation: "<p>Ice was the official sword of the Lord of Winterfell, forged from Valyrian steel and handed down over the ages. After being used to behead Ned Stark at the end of Season 1, it was subsequently melted down to forge two new swords – the Oathkeeper and Widow's Wail.</p>",
 	correct: function() {
+			correctAnswer = "#choice1";
 			return this.multChoices.multChoice1;
 			},
 	gif: "https://media.giphy.com/media/kzlGvANuSMs0M/giphy.gif",
@@ -260,6 +267,7 @@ var question7 = {
 				  multChoice4: "<button id='choice4'>4. Bronn</button>"},
 	explanation: "<p>After a signal from Tyrion, Bronn shoots a flaming arrow into a floating trap of wildfire around Stannis Baratheon's fleet. The explosion that follows destroys dozens of ships and effectively wins the battle for King Joffrey.</p>",
 	correct: function() {
+			correctAnswer = "#choice4";
 			return this.multChoices.multChoice4;
 			},
 	gif: "https://media.giphy.com/media/a8npXvq6M7Cqk/giphy.gif",
@@ -286,6 +294,7 @@ var question8 = {
 				  multChoice4: "<button id='choice4'>4. Ruby-colored armor</button>"},
 	explanation: '<p>Oberyn Martell is skilled not only in combat, but also in the use of deadly potions. In the battle against Ser Gregor Clegane that ultimately cost him his life, Martell managed to severely wound "the mountain" with a spear tip coated in poisonous Manticore venom.</p>',
 	correct: function() {
+			correctAnswer = "#choice2";
 			return this.multChoices.multChoice2;
 			},
 	gif: "https://media.giphy.com/media/iwVHUKnyvZKEg/giphy.gif",
@@ -312,6 +321,7 @@ var question9 = {
 				  multChoice4: "<button id='choice4'>4. Uncontrollable laughter</button>"},
 	explanation: "<p>After Arya takes a life that was not hers to kill, she is rendered blind as punishment. The scene, at the end of Season 5, is a new twist on Arya's efforts to become a 'faceless' assassin.</p>",
 	correct: function() {
+			correctAnswer = "#choice3";
 			return this.multChoices.multChoice3;
 			},
 	gif: "https://media.giphy.com/media/ZTMyRjoNbPqWk/giphy.gif",
@@ -338,6 +348,7 @@ var question10 = {
 				  multChoice4: "<button id='choice4'>4. Summer</button>"},
 	explanation: '<p>After the direwolf Nymeria flees into the woods following a defensive attack against Prince Joffrey, Queen Cersei Lannister orders the execution of her pack sister, Lady. Now, two of the four remaining Stark family direwolves are in places unknown.</p>',
 	correct: function() {
+			correctAnswer = "#choice2";
 			return this.multChoices.multChoice2;
 			},
 	gif: "https://media.giphy.com/media/eT7uKeHH5EkOA/giphy.gif",
@@ -372,6 +383,9 @@ function triviaQuestions(questionObject) {
 	DOMmultChoice.append(questionObject.multChoices.multChoice1, questionObject.multChoices.multChoice2, questionObject.multChoices.multChoice3, questionObject.multChoices.multChoice4);
 	DOMgif.attr("src", questionObject.gif);
 	questionObject.dataButtons();
+	questionObject.correct();
+
+
 
 
 
@@ -383,7 +397,7 @@ function triviaQuestions(questionObject) {
 
 					if (($(this).attr("data-multChoice")) === (questionObject.correct())) {
 						$(this).css("background-color", "#4CAF50");
-						DOMexplanation.prepend("<p>Correct!</p>");
+						DOMexplanation.prepend("<p style='color:green;'>Correct!</p>");
 						correct++;
 						count++;
 						total = correct + incorrect;
@@ -397,8 +411,11 @@ function triviaQuestions(questionObject) {
 						}
 
 					} else {
-						DOMexplanation.prepend("<p>Incorrect!</p>");
+						DOMexplanation.prepend("<p style='color:red;'>Incorrect!</p>");
 						$(this).css("background-color", "red");
+						console.log($(this));
+						console.log(correctAnswer);
+						$(correctAnswer).css("background-color", "#4CAF50");
 						incorrect++;
 						count++;
 						total = correct + incorrect;
