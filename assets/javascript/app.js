@@ -87,7 +87,7 @@ var timer = {
 				
 				});
 			}			
-		} , 3000);
+		} , 30000);
 	},
 	clearTimeout: function() {
 		clearTimeout(timeoutInterval);
@@ -380,6 +380,7 @@ function triviaQuestions(questionObject) {
 					DOMexplanation.append(questionObject.explanation);
 
 					if (($(this).attr("data-multChoice")) === (questionObject.correct())) {
+						$(this).css("background-color", "#4CAF50");
 						DOMexplanation.prepend("<p>Correct!</p>");
 						correct++;
 						count++;
@@ -390,11 +391,12 @@ function triviaQuestions(questionObject) {
 						if (total < 10) {
 							setTimeout(triviaQuestions, 1000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 1000);
+							setTimeout(gameOver, 7000);
 						}
 
 					} else {
 						DOMexplanation.prepend("<p>Incorrect!</p>");
+						$(this).css("background-color", "red");
 						incorrect++;
 						count++;
 						total = correct + incorrect;
@@ -404,7 +406,7 @@ function triviaQuestions(questionObject) {
 						if (total < 10) {
 							setTimeout(triviaQuestions, 1000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 1000);
+							setTimeout(gameOver, 7000);
 						}
 					}
 				}
