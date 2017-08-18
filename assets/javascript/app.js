@@ -20,6 +20,8 @@ function gameOver() {
 	DOMexplanation.empty();
 	DOMquestion.empty();
 	DOMmultChoice.empty();
+	var gameOverAudio = new Audio("assets/audio/hbo.mp3");
+	gameOverAudio.play();
 
 
 
