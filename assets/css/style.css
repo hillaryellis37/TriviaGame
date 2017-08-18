@@ -1,11 +1,28 @@
 body {
 /*	background-image: url("https://images.alphacoders.com/226/226091.jpg");*/
-	background-image: url("../images/1920x1080-1255301-game-of-thrones.jpg");
-	background-image: 
+	background-image: url("../images/circles-and-roundabouts.png");
+/*    background-position: 50% 87%;*/
+/*    background-size: cover;*/
+    height: 100%;
+}
+header {
+	background-image: url("https://media.giphy.com/media/TBc0YcHZgbAje/giphy.gif");
+		height: 265px;
+/*    background-position: 50% 87%;
+    background-size: cover;*/
 }
 
 header h1 {
+	background-image: url("http://www.kingtrivia.com/wp-content/uploads/2017/06/GoT-Wesbite-Banner.png");
+    background-position: 50% 87%;
+    background-size: cover;
 	color: white;
+	font-family: 'Cinzel', serif;
+	font-size: 45pt;
+	color: rgba(210, 135, 124, 0);
+	height: 260px;
+	margin: 0px;
+
 }
 hr {
     margin-top: 5px;
@@ -16,11 +33,11 @@ hr {
 
 
 .container {
-	margin-top: 200px;
+	margin-top: 100px;
 }
 
 .left-container {
-	background-color: #fffef8;
+	background-color: #dadacd;
 	height: 500px;
 	padding: 20px;
 	box-shadow: 10px 10px 5px rgba(136, 136, 136, 0.55);
@@ -34,7 +51,7 @@ hr {
 
 
 
-}
+
 
 #image_container {
 /*	background-color: white;*/
@@ -66,8 +83,8 @@ hr {
 }
 
 
-.explanation-container p{
-	font-size: 13pt;
+.explanation-container p {
+	font-size: 11pt;
 }
 
 .row1 {
@@ -88,6 +105,8 @@ hr {
 
 p {
 	font-size: 14pt;
+		font-family: 'Cinzel', serif;
+
 }
 
 .gif {
@@ -103,10 +122,10 @@ p {
 
 
 
-}
 
 .start-page-container p {
 	font-size: 18pt;
+	font-family: 'Cinzel', serif;
 
 
 }
