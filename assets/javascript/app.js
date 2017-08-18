@@ -16,6 +16,7 @@
 	var correctAnswer;
 
 function gameOver() {
+	$("#image_container").children().hide();
 	DOMquestion.empty();
 	DOMmultChoice.empty();
 	DOMexplanation.empty();
@@ -48,7 +49,7 @@ function gameOver() {
 		timer.reset();
 		total = correct + incorrect;
 		$("#score").html("Score: " + correct + "/" + total);
-		triviaQuestions(question1);
+		newGame(question1);
 	});
 }
 
@@ -58,7 +59,7 @@ var timer = {
 	time: 30,
 	reset: function() {
 		timer.time = 30;
-		$("#timer").html("Time Remaining: 00:" + timer.time);
+		$("#timer").html("Time Remaining: " + timer.time);
 
 	},
 	start: function() {
@@ -71,7 +72,7 @@ var timer = {
 	},
 	count: function() {
 		timer.time--;
-		$("#timer").html("Time Remaining: 00:" + timer.time);
+		$("#timer").html("Time Remaining: " + timer.time);
 
 	},
 	timeout: function() {
@@ -85,7 +86,7 @@ var timer = {
 			DOMexplanation.append("<p style='color: red;'>You have run out of time! Please press next to go to the next question: </p>");
 			DOMexplanation.append("<button id='nextQ'>Next</button>");
 				$("#nextQ").on("click", function() {
-					triviaQuestions(nextQ);
+					newGame(nextQ);
 
 				
 				});
@@ -368,7 +369,7 @@ var question10 = {
 };
 
 
-function triviaQuestions(questionObject) {
+var newGame = function triviaQuestions(questionObject) {
 	nextQ = questionObject.next();
 
 	$(".start-page-container").empty();
@@ -379,11 +380,17 @@ function triviaQuestions(questionObject) {
 	DOMquestion.empty();
 	DOMmultChoice.empty();
 	DOMexplanation.empty();
+	$("#image_container").children().fadeOut(0);
+	$("#image_container").children().fadeIn(300);
+	$(".left-container").children().fadeOut(0);
+	$(".left-container").children().fadeIn(1000);
+	DOMquestion.append("<hr>");
 	DOMquestion.append(questionObject.question);
 	DOMmultChoice.append(questionObject.multChoices.multChoice1, questionObject.multChoices.multChoice2, questionObject.multChoices.multChoice3, questionObject.multChoices.multChoice4);
 	DOMgif.attr("src", questionObject.gif);
 	questionObject.dataButtons();
 	questionObject.correct();
+
 
 
 
@@ -397,7 +404,9 @@ function triviaQuestions(questionObject) {
 
 					if (($(this).attr("data-multChoice")) === (questionObject.correct())) {
 						$(this).css("background-color", "#4CAF50");
+
 						DOMexplanation.prepend("<p style='color:green;'>Correct!</p>");
+						DOMexplanation.prepend("<hr>");
 						correct++;
 						count++;
 						total = correct + incorrect;
@@ -405,13 +414,14 @@ function triviaQuestions(questionObject) {
 						gameOn = false;
 						timer.stop();
 						if (total < 10) {
-							setTimeout(triviaQuestions, 7000, questionObject.next());
+							setTimeout(triviaQuestions, 3000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 7000);
+							setTimeout(gameOver, 3000);
 						}
 
 					} else {
 						DOMexplanation.prepend("<p style='color:red;'>Incorrect!</p>");
+						DOMexplanation.prepend("<hr>");
 						$(this).css("background-color", "red");
 						console.log($(this));
 						console.log(correctAnswer);
@@ -423,9 +433,9 @@ function triviaQuestions(questionObject) {
 						gameOn = false;
 						timer.stop();
 						if (total < 10) {
-							setTimeout(triviaQuestions, 7000, questionObject.next());
+							setTimeout(triviaQuestions, 3000, questionObject.next());
 						} else {
-							setTimeout(gameOver, 7000);
+							setTimeout(gameOver, 3000);
 						}
 					}
 				}
@@ -433,22 +443,20 @@ function triviaQuestions(questionObject) {
 	
 }
 
-
-
-function pageSetup() {
-
+$("#start_button").on("click", function() {
+	
 	$(".start-page-container").html("");
-	
-	DOMtimer.append("<p id='timer'>Time Remaining: 00:30</p>");
+	DOMtimer.append("<p id='timer'>Time Remaining: 30</p>");
 	DOMscore.append("<p id='score'>Score: " + correct + "</p>");
-	
-	triviaQuestions(question1);
+	newGame(question1);
+	// triviaQuestions(question1);
 
-}
-
-
+});
 
 
 
 
-$("#start_button").on("click", pageSetup);
+
+
+
+

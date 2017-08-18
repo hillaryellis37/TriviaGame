@@ -7,21 +7,43 @@ body {
 header h1 {
 	color: white;
 }
+hr {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
 
 .container {
 	margin-top: 200px;
 }
 
 .left-container {
-	background-color: white;
+	background-color: #fffef8;
 	height: 500px;
 	padding: 20px;
+	box-shadow: 10px 10px 5px rgba(136, 136, 136, 0.55);
+	margin: 20px;
+/*		background-image: url("https://media.giphy.com/media/TBc0YcHZgbAje/giphy.gif");*/
+}
+
+
+
+
+
+
+
 }
 
 #image_container {
 /*	background-color: white;*/
-	height: 500px;
+	height: 500px;/*
+	color: rgba(90, 0, 9, 0.58);*/
+	margin: 20px 10px 10px 10px;
 }
+
+
 
 .timer-container {
 /*	background-color: red;*/
@@ -44,8 +66,8 @@ header h1 {
 }
 
 
-.explanation-container {
-/*	background-color: blue;*/
+.explanation-container p{
+	font-size: 13pt;
 }
 
 .row1 {
@@ -69,12 +91,23 @@ p {
 }
 
 .gif {
+/*	background-image: url("https://media.giphy.com/media/TBc0YcHZgbAje/giphy.gif");*/
 	width: 555px; 
 	height:370px;
+	box-shadow: 10px 10px 5px rgba(136, 136, 136, 0.55);
+	margin: 20px;
 }
 
-#intro {
+
+
+
+
+
+}
+
+.start-page-container p {
 	font-size: 18pt;
+
 
 }
 
