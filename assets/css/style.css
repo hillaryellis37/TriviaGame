@@ -16,6 +16,7 @@ header h1 {
 	background-image: url("http://www.kingtrivia.com/wp-content/uploads/2017/06/GoT-Wesbite-Banner.png");
     background-position: 50% 85%;
     background-size: 1581px;
+        background-repeat:no-repeat;
 	color: white;
 	font-family: 'Cinzel', serif;
 	font-size: 45pt;
@@ -129,6 +130,8 @@ p {
 
 
 }
+
+@media screen and (max-width: 1550px) {
 
 
 
