@@ -7,21 +7,21 @@ body {
 }
 header {
 	background-image: url("https://media.giphy.com/media/TBc0YcHZgbAje/giphy.gif");
-		height: 265px;
+		height: 305px;
 /*    background-position: 50% 87%;
     background-size: cover;*/
 }
 
 header h1 {
 	background-image: url("http://www.kingtrivia.com/wp-content/uploads/2017/06/GoT-Wesbite-Banner.png");
-    background-position: 50% 85%;
-    background-size: 1581px;
+    background-position: 50% 78%;
+    background-size: 1950px;
         background-repeat:no-repeat;
 	color: white;
 	font-family: 'Cinzel', serif;
 	font-size: 45pt;
 	color: rgba(210, 135, 124, 0);
-	height: 260px;
+	height: 300px;
 	margin: 0px;
 
 }
