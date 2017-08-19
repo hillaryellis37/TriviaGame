@@ -91,7 +91,7 @@ var timer = {
 				
 				});
 			}			
-		} , 30000);
+		} , 30500);
 	},
 	clearTimeout: function() {
 		clearTimeout(timeoutInterval);
